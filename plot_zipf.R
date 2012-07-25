@@ -13,5 +13,7 @@ read_zipf <- function(file){
 
 data <- ldply(files, read_zipf, .progress = "text")
 
-ggplot(data, aes(log(Rank), log(Freq), color = Seg))+
+p <- ggplot(data, aes(log(Rank), log(Freq), color = Seg))+
   geom_point()
+
+ggsave("zipf_by_seg.png", plot = p, width = 5.5, height = 5)
